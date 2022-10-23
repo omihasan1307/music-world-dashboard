@@ -1,6 +1,5 @@
-import { collection, deleteDoc, doc, onSnapshot } from "firebase/firestore";
+import { collection, onSnapshot } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
-import { AiFillDelete } from "react-icons/ai";
 
 import { db } from "../../firebase.init";
 
@@ -21,10 +20,6 @@ const Users = () => {
       }
     );
   }, []);
-
-  const handleRemove = async (id) => {
-    await deleteDoc(doc(db, "users", id));
-  };
 
   return (
     <div className="common-line">
@@ -50,10 +45,6 @@ const Users = () => {
                     <h6> {email}</h6>
                   </div>
                 </div>
-                <AiFillDelete
-                  onClick={() => handleRemove(id)}
-                  className="my-auto delete-btn me-3"
-                />
               </div>
             </div>
           );

@@ -40,6 +40,7 @@ const Order = () => {
       {loading === true &&
         order.map((element) => {
           const { name, email, address, phone, cart, id } = element;
+
           return (
             <div className="border  m-3 p-3">
               <div className="d-flex justify-content-between">
@@ -53,11 +54,23 @@ const Order = () => {
                 </div>
                 <div>
                   {cart.map((item) => {
+                    const { id, productName, price } = item.product;
                     return (
-                      <div>
-                        <h6>{item.productName}</h6>
-                        <p>{item.price}</p>
-                        <p>{item.quantity}</p>
+                      <div
+                        key={item.pId}
+                        className="order-item border mb-2 p-2"
+                      >
+                        <h6>
+                          <span className="text-warning">PID:</span> {id}
+                        </h6>
+                        <p>
+                          <span className="text-warning">Name:</span>{" "}
+                          {productName}
+                        </p>
+                        <p>
+                          <span className="text-warning">Price:</span> BDT{" "}
+                          {price}
+                        </p>
                       </div>
                     );
                   })}

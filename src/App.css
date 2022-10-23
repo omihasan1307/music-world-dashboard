@@ -33,3 +33,25 @@ body {
 .delete-btn:hover {
   color: red;
 }
+
+.auth-card {
+  height: 100vh;
+}
+
+.auth-main-cart {
+  border: 1px solid grey;
+  border-radius: 13px;
+  padding: 50px;
+}
+
+.input-field {
+  color: white;
+  border: none;
+  margin-bottom: 20px;
+  width: 400px;
+  background-color: black;
+  border: 1px solid grey;
+}
+.order-item p {
+  line-height: 10px;
+}

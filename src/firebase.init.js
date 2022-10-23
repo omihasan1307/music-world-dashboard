@@ -3,12 +3,12 @@ import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyADX991V1bG-8QDRWIbchTAbK3GCOPdCjw",
-  authDomain: "music-world-41d20.firebaseapp.com",
-  projectId: "music-world-41d20",
-  storageBucket: "music-world-41d20.appspot.com",
-  messagingSenderId: "1006113892797",
-  appId: "1:1006113892797:web:519cc1abcd898eaef08ad4",
+  apiKey: "AIzaSyDmKkGRTnrd4AHU7AQQ-j3Hj4QUaao6cAg",
+  authDomain: "music-world-358e7.firebaseapp.com",
+  projectId: "music-world-358e7",
+  storageBucket: "music-world-358e7.appspot.com",
+  messagingSenderId: "551601941849",
+  appId: "1:551601941849:web:1c9321d87e938343b9b048",
 };
 
 const app = initializeApp(firebaseConfig);

@@ -6,7 +6,6 @@ const AddProduct = () => {
   const [productName, setProductName] = useState("");
   const [productPrice, setProductPrice] = useState("");
   const [productAbout, setProductAbout] = useState("");
-  const [productQuantity, setProductQuantity] = useState("");
   const [productImage, setProductImage] = useState("");
   const [productCategory, setProductCategory] = useState("");
 
@@ -19,13 +18,11 @@ const AddProduct = () => {
   const handleAboutBlur = (event) => {
     setProductAbout(event.target.value);
   };
-  const handleQuantityBlur = (event) => {
-    setProductQuantity(event.target.value);
-  };
+
   const handleImageBlur = (event) => {
     setProductImage(event.target.value);
   };
-  const handleCatagoryBlur = (event) => {
+  const handleCategoryBlur = (event) => {
     setProductCategory(event.target.value);
   };
 
@@ -36,7 +33,7 @@ const AddProduct = () => {
       price: productPrice,
       productAbout: productAbout,
       category: productCategory,
-      quantity: productQuantity,
+
       img: productImage,
     });
 
@@ -48,7 +45,7 @@ const AddProduct = () => {
     setProductName("");
     setProductPrice("");
     setProductAbout("");
-    setProductQuantity("");
+
     setProductCategory("");
     setProductImage("");
   };
@@ -81,23 +78,12 @@ const AddProduct = () => {
             />
             <br />
 
-            <label htmlFor="text">About</label>
+            <label htmlFor="text">Details</label>
             <br />
             <input
               onBlur={handleAboutBlur}
               type="text"
-              placeholder="Product about"
-              className="input-filed"
-              required
-            />
-            <br />
-
-            <label htmlFor="text">Quantity</label>
-            <br />
-            <input
-              onBlur={handleQuantityBlur}
-              type="text"
-              placeholder="Product quantity"
+              placeholder="Product details"
               className="input-filed"
               required
             />
@@ -112,12 +98,11 @@ const AddProduct = () => {
               className="input-filed"
               required
             />
-
             <br />
-
             <label htmlFor="text">Category</label>
             <br />
-            <select onBlur={handleCatagoryBlur} className="input-filed">
+            <select onBlur={handleCategoryBlur} className="input-filed">
+              <option selected>Select Category</option>
               <option value="Instrument">Instrument</option>
               <option value="Course">Course</option>
             </select>
