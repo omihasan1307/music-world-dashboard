@@ -25,13 +25,7 @@ const Login = () => {
   };
 
   const handlePasswordBlur = (event) => {
-    const passwordValid =
-      /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
-    if (event.target.value.match(passwordValid)) {
-      setPassword(event.target.value);
-    } else {
-      alert("Password is not valid");
-    }
+    setPassword(event.target.value);
   };
 
   if (user) {

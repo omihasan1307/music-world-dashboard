@@ -5,6 +5,7 @@ import { AiFillDelete } from "react-icons/ai";
 
 const Order = () => {
   const [order, setOrder] = useState();
+  const [payment, setPayment] = useState();
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -19,10 +20,23 @@ const Order = () => {
         console.log(error);
       }
     );
+
+    onSnapshot(
+      collection(db, "paymentInfo"),
+      (snapshot) => {
+        const getValue = snapshot.docs.map((e) => e.data());
+        setPayment(getValue);
+        setLoading(true);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }, []);
 
   const handleRemove = async (id) => {
     await deleteDoc(doc(db, "order", id));
+    await deleteDoc(doc(db, "paymentInfo", id));
   };
 
   return (
@@ -50,6 +64,13 @@ const Order = () => {
                     <h6>E-mail: {email}</h6>
                     <h6>Phone: {phone}</h6>
                     <p>Address: {address}</p>
+                    <hr />
+                    {payment.map((e) => (
+                      <div>
+                        <small>Card: {e.card}</small>
+                        <h5>Paid: BDT {e.paid}</h5>
+                      </div>
+                    ))}
                   </div>
                 </div>
                 <div>

@@ -1,6 +1,5 @@
 import { collection, onSnapshot } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
-
 import { db } from "../../firebase.init";
 
 const Users = () => {
@@ -25,8 +24,8 @@ const Users = () => {
     <div className="common-line">
       {loading === false ? (
         <div className="d-flex justify-content-center align-items-center h-100">
-          <div class="spinner-grow" role="status">
-            <span class="visually-hidden">Loading...</span>
+          <div className="spinner-grow" role="status">
+            <span className="visually-hidden">Loading...</span>
           </div>
         </div>
       ) : (
@@ -37,7 +36,7 @@ const Users = () => {
           const { name, email, id } = elements;
 
           return (
-            <div className="border  m-3 p-3">
+            <div key={elements.id} className="border  m-3 p-3">
               <div className="d-flex justify-content-between">
                 <div className="d-flex">
                   <div className="ms-4">
