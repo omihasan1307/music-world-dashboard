@@ -7,6 +7,7 @@ const AddProduct = () => {
   const [productPrice, setProductPrice] = useState("");
   const [productAbout, setProductAbout] = useState("");
   const [productImage, setProductImage] = useState("");
+  const [productVideo, setProductVideo] = useState("");
   const [productCategory, setProductCategory] = useState("");
 
   const handleNameBlur = (event) => {
@@ -18,13 +19,16 @@ const AddProduct = () => {
   const handleAboutBlur = (event) => {
     setProductAbout(event.target.value);
   };
-
   const handleImageBlur = (event) => {
     setProductImage(event.target.value);
+  };
+  const handleVideoBlur = (event) => {
+    setProductVideo(event.target.value);
   };
   const handleCategoryBlur = (event) => {
     setProductCategory(event.target.value);
   };
+
 
   const handleAddProduct = async (event) => {
     event.preventDefault();
@@ -33,8 +37,9 @@ const AddProduct = () => {
       price: productPrice,
       productAbout: productAbout,
       category: productCategory,
-
+      video: productVideo,
       img: productImage,
+      status: false,
     });
 
     await updateDoc(doc(db, "products", docRef.id), {
@@ -45,7 +50,7 @@ const AddProduct = () => {
     setProductName("");
     setProductPrice("");
     setProductAbout("");
-
+    setProductVideo("");
     setProductCategory("");
     setProductImage("");
   };
@@ -96,7 +101,16 @@ const AddProduct = () => {
               type="text"
               placeholder="Product Image Url"
               className="input-filed"
-              required
+
+            />
+            <br />
+            <label htmlFor="text">Video</label>
+            <br />
+            <input
+              onBlur={handleVideoBlur}
+              type="text"
+              placeholder="Product Video Url"
+              className="input-filed"
             />
             <br />
             <label htmlFor="text">Category</label>
