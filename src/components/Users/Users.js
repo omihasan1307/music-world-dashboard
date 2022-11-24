@@ -5,7 +5,6 @@ import { db } from "../../firebase.init";
 const Users = () => {
   const [users, setUsers] = useState();
   const [loading, setLoading] = useState(false);
-  console.log(users);
   useEffect(() => {
     onSnapshot(
       collection(db, "users"),
@@ -33,7 +32,7 @@ const Users = () => {
       )}
       {loading === true &&
         users.map((elements) => {
-          const { name, email, id } = elements;
+          const { name, email } = elements;
 
           return (
             <div key={elements.id} className="border  m-3 p-3">

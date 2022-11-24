@@ -33,7 +33,7 @@ const Contact = () => {
       )}
       {loading === true &&
         contact.map((element) => {
-          const { name, email, message, time, userId } = element;
+          const { name, email, message } = element;
           return (
             <div className="border m-3 p-3">
               <h1>{name}</h1>

@@ -12,6 +12,7 @@ const AddProduct = () => {
 
   const handleNameBlur = (event) => {
     setProductName(event.target.value);
+
   };
   const handlePriceBlur = (event) => {
     setProductPrice(event.target.value);
@@ -38,21 +39,16 @@ const AddProduct = () => {
       productAbout: productAbout,
       category: productCategory,
       video: productVideo,
-      img: productImage,
-      status: false,
+      img: productImage
+
     });
 
     await updateDoc(doc(db, "products", docRef.id), {
       id: docRef.id,
     });
 
-    alert("Product add successfully", window.location.reload());
-    setProductName("");
-    setProductPrice("");
-    setProductAbout("");
-    setProductVideo("");
-    setProductCategory("");
-    setProductImage("");
+
+    alert("Product add successfully");
   };
 
   return (
