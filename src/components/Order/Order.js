@@ -8,10 +8,12 @@ const Order = () => {
   const [payment, setPayment] = useState();
   const [loading, setLoading] = useState(false);
 
+  console.log(payment);
   useEffect(() => {
     onSnapshot(
       collection(db, "order"),
       (snapshot) => {
+        // console.log(snapshot);
         const getValue = snapshot.docs.map((e) => e.data());
         setOrder(getValue);
         setLoading(true);
@@ -20,7 +22,6 @@ const Order = () => {
         console.log(error);
       }
     );
-
     onSnapshot(
       collection(db, "paymentInfo"),
       (snapshot) => {
