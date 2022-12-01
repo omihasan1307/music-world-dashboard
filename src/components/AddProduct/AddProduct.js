@@ -12,7 +12,6 @@ const AddProduct = () => {
 
   const handleNameBlur = (event) => {
     setProductName(event.target.value);
-
   };
   const handlePriceBlur = (event) => {
     setProductPrice(event.target.value);
@@ -30,7 +29,6 @@ const AddProduct = () => {
     setProductCategory(event.target.value);
   };
 
-
   const handleAddProduct = async (event) => {
     event.preventDefault();
     const docRef = await addDoc(collection(db, "products"), {
@@ -39,14 +37,12 @@ const AddProduct = () => {
       productAbout: productAbout,
       category: productCategory,
       video: productVideo,
-      img: productImage
-
+      img: productImage,
     });
 
     await updateDoc(doc(db, "products", docRef.id), {
       id: docRef.id,
     });
-
 
     alert("Product add successfully");
   };
@@ -73,7 +69,7 @@ const AddProduct = () => {
             <input
               onBlur={handlePriceBlur}
               type="text"
-              placeholder="Product name"
+              placeholder="Product price"
               className="input-filed"
               required
             />
@@ -97,7 +93,6 @@ const AddProduct = () => {
               type="text"
               placeholder="Product Image Url"
               className="input-filed"
-
             />
             <br />
             <label htmlFor="text">Video</label>

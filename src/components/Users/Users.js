@@ -5,6 +5,7 @@ import { db } from "../../firebase.init";
 const Users = () => {
   const [users, setUsers] = useState();
   const [loading, setLoading] = useState(false);
+
   useEffect(() => {
     onSnapshot(
       collection(db, "users"),
