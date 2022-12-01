@@ -16,12 +16,28 @@ const ViewProduct = () => {
   const [loading, setLoading] = useState(false);
   const [productName, setProductName] = useState("");
   const [productPrice, setProductPrice] = useState("");
+  const [productAbout, setProductAbout] = useState("");
+  const [productImage, setProductImage] = useState("");
+  const [productVideo, setProductVideo] = useState("");
+  const [productCategory, setProductCategory] = useState("");
 
   const handleNameBlur = (event) => {
     setProductName(event.target.value);
   };
   const handlePriceBlur = (event) => {
     setProductPrice(event.target.value);
+  };
+  const handleAboutBlur = (event) => {
+    setProductAbout(event.target.value);
+  };
+  const handleImageBlur = (event) => {
+    setProductImage(event.target.value);
+  };
+  const handleVideoBlur = (event) => {
+    setProductVideo(event.target.value);
+  };
+  const handleCategoryBlur = (event) => {
+    setProductCategory(event.target.value);
   };
 
   useEffect(() => {
@@ -57,12 +73,19 @@ const ViewProduct = () => {
   };
 
   const handleUpdate = async (id) => {
-    await updateDoc(doc(db, "products", id), {
-      productName: productName,
-      price: productPrice,
-    });
-    alert("Update Successfull. 😍");
+    if (productName === "" || productPrice === "" || productAbout === "") {
+      alert("Please input your field");
+    } else {
+      await updateDoc(doc(db, "products", id), {
+        productName: productName,
+        price: productPrice,
+        productAbout: productAbout,
+      });
+      alert("Update Successfull. 😍");
+    }
   };
+
+  // console.log(update);
 
   return (
     <div className="common-line">
@@ -124,7 +147,7 @@ const ViewProduct = () => {
                     <div class="modal-content">
                       <div class="modal-header">
                         <h1 class="modal-title fs-5" id="exampleModalLabel">
-                          {update.id}
+                          Update your product information
                         </h1>
                         <button
                           type="button"
@@ -149,6 +172,27 @@ const ViewProduct = () => {
                           className="input-filed border"
                           required
                         />
+                        <br />
+                        <input
+                          onBlur={handleAboutBlur}
+                          type="text"
+                          placeholder={update.productAbout}
+                          className="input-filed border"
+                          required
+                        />
+                        {/* <input
+                          onBlur={handleImageBlur}
+                          type="text"
+                          placeholder={update.img}
+                          className="input-filed border"
+                        /> */}
+                        {/* <br />
+                        <input
+                          onBlur={handleVideoBlur}
+                          type="text"
+                          placeholder={update.video}
+                          className="input-filed border"
+                        /> */}
                       </div>
                       <div class="modal-footer">
                         <button
