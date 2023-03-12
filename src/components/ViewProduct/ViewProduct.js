@@ -16,10 +16,10 @@ const ViewProduct = () => {
   const [loading, setLoading] = useState(false);
   const [productName, setProductName] = useState("");
   const [productPrice, setProductPrice] = useState("");
-  const [productAbout, setProductAbout] = useState("");
-  const [productImage, setProductImage] = useState("");
-  const [productVideo, setProductVideo] = useState("");
-  const [productCategory, setProductCategory] = useState("");
+  // const [productAbout, setProductAbout] = useState("");
+  // const [productImage, setProductImage] = useState("");
+  // const [productVideo, setProductVideo] = useState("");
+  // const [productCategory, setProductCategory] = useState("");
 
   const handleNameBlur = (event) => {
     setProductName(event.target.value);
@@ -27,18 +27,18 @@ const ViewProduct = () => {
   const handlePriceBlur = (event) => {
     setProductPrice(event.target.value);
   };
-  const handleAboutBlur = (event) => {
-    setProductAbout(event.target.value);
-  };
-  const handleImageBlur = (event) => {
-    setProductImage(event.target.value);
-  };
-  const handleVideoBlur = (event) => {
-    setProductVideo(event.target.value);
-  };
-  const handleCategoryBlur = (event) => {
-    setProductCategory(event.target.value);
-  };
+  // const handleAboutBlur = (event) => {
+  //   setProductAbout(event.target.value);
+  // };
+  // const handleImageBlur = (event) => {
+  //   setProductImage(event.target.value);
+  // };
+  // const handleVideoBlur = (event) => {
+  //   setProductVideo(event.target.value);
+  // };
+  // const handleCategoryBlur = (event) => {
+  //   setProductCategory(event.target.value);
+  // };
 
   useEffect(() => {
     onSnapshot(
@@ -73,13 +73,12 @@ const ViewProduct = () => {
   };
 
   const handleUpdate = async (id) => {
-    if (productName === "" || productPrice === "" || productAbout === "") {
+    if (productName === "" || productPrice === "") {
       alert("Please input your field");
     } else {
       await updateDoc(doc(db, "products", id), {
         productName: productName,
         price: productPrice,
-        productAbout: productAbout,
       });
       alert("Update Successfull. 😍");
     }
@@ -160,6 +159,7 @@ const ViewProduct = () => {
                         <input
                           onBlur={handleNameBlur}
                           type="text"
+                          value={update.productName}
                           placeholder={update.productName}
                           className="input-filed border"
                           required
@@ -173,13 +173,13 @@ const ViewProduct = () => {
                           required
                         />
                         <br />
-                        <input
+                        {/* <input
                           onBlur={handleAboutBlur}
                           type="text"
                           placeholder={update.productAbout}
                           className="input-filed border"
                           required
-                        />
+                        /> */}
                         {/* <input
                           onBlur={handleImageBlur}
                           type="text"

@@ -18,6 +18,11 @@ const OrderDetails = ({ orderDetail, handleUserOrder, order }) => {
     });
   };
 
+  const completeOrder = async (uid, orderId) => {
+    await updateDoc(doc(db, `order/${uid}/userOrder`, orderId), {
+      processing: false,
+    });
+  };
   return (
     <div className="border  m-3 p-3">
       <div className="d-flex justify-content-between">
@@ -78,14 +83,30 @@ const OrderDetails = ({ orderDetail, handleUserOrder, order }) => {
                     <span className="text-primary">Paid:</span> BDT{" "}
                     {viewOrder.paid}
                   </h6>
-                  <button
-                    className="btn btn-success"
-                    onClick={() =>
-                      confirmOrder(viewOrder.uid, viewOrder.orderId)
-                    }
-                  >
-                    {viewOrder.status ? "Confirm" : "Yes"}
-                  </button>
+                  {viewOrder.processing && (
+                    <button
+                      className={
+                        viewOrder.status
+                          ? "btn btn-success me-3"
+                          : "btn btn-danger me-3"
+                      }
+                      onClick={() =>
+                        confirmOrder(viewOrder.uid, viewOrder.orderId)
+                      }
+                    >
+                      {viewOrder.status ? "Processing" : "Pending"}
+                    </button>
+                  )}
+                  {viewOrder.status && (
+                    <button
+                      className="btn btn-success"
+                      onClick={() =>
+                        completeOrder(viewOrder.uid, viewOrder.orderId)
+                      }
+                    >
+                      {viewOrder.status && "Complete"}
+                    </button>
+                  )}
                 </div>
                 <div className="col-12 col-md-8">
                   {viewOrder.cart?.map((e) => (
